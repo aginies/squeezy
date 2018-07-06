@@ -700,7 +700,7 @@ sub command
 
    '-playing' =>
       {
-	  help    => 'show the currently-playing track',
+	  help    => 'show the currently-playing track and Album',
 	  command => sub {
 	      my $album  = pick_field 2, send_command "$player album ?";
 	      my $title = pick_field 2, send_command "$player current_title ?";
@@ -711,7 +711,7 @@ sub command
       },
    '-artist' =>
       {
-	  help    => 'show the currently artist',
+	  help    => 'show the currently Artist',
 	  command => sub {
 	      my $artist  = pick_field 2, send_command "$player artist ?";
 	      print "$artist\n";
