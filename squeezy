@@ -356,7 +356,7 @@ sub listen
 sub command
 {
    my $command = shift;
-   $command{$command}->{command}(@_);
+   my $V = $command{$command}->{command}(@_);
 }
 
 %command =
@@ -700,10 +700,23 @@ sub command
 
    '-playing' =>
       {
-	 help    => 'show the currently-playing track',
-	 command => sub { report 'playing', pick_field 2, send_command "$player current_title ?"; }
-      },
+	  help    => 'show the currently-playing track',
+	  command => sub {
+	      my $album  = pick_field 2, send_command "$player album ?";
+	      my $title = pick_field 2, send_command "$player current_title ?";
+	      print "$album:\n $title \n";
+	  }
 
+#         report 'playing', pick_field 2, send_command "$player current_title ?"; 
+      },
+   '-artist' =>
+      {
+	  help    => 'show the currently artist',
+	  command => sub {
+	      my $artist  = pick_field 2, send_command "$player artist ?";
+	      print "$artist\n";
+	  }
+      },
    '-power' =>
       {
 	 help    => 'show whether power is on or off',
