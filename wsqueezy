@@ -1,0 +1,18 @@
+#!/bin/sh
+WDIR="/home/aginies/scripts/squeezy-read-only/"
+
+notify-send -i rhythmbox "Zik" -u normal --hint int:transient:1 -t 1500 \
+    "`$WDIR/squeezy $@ | cut -d ' ' -f 3-`"
+
+
+# $WDIR/squeezy -next | cut -d ' ' -f 3-
+# $WDIR/squeezy -previous | cut -d ' ' -f 3-
+# $WDIR/squeezy -artist
+# $WDIR/squeezy -playing
+# $WDIR/squeezy -
+# $WDIR/squeezy +
+
+
+
+
+
